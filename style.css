@@ -512,10 +512,10 @@ body {
 }
 
 .typo-sakib {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -559,6 +559,61 @@ body {
   color: #880e4f;
   text-shadow: 0 4px 28px rgba(216, 27, 96, 0.3), 0 2px 4px rgba(255, 255, 255, 0.9);
   animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 6: "Till eternity" & "2026-infinity sign" with typographic image */
+.typo-eternity {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5.2rem;
+  font-weight: 500;
+  color: #880e4f;
+  letter-spacing: 0.04em;
+  text-shadow: 0 4px 25px rgba(216, 27, 96, 0.3), 0 0 14px rgba(255, 192, 203, 0.7);
+  animation: fadeInRise 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.infinity-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
+  animation: popIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.infinity-svg-img {
+  max-width: 560px;
+  width: 92vw;
+  height: auto;
+  filter: drop-shadow(0 6px 24px rgba(35, 10, 18, 0.28));
+  transition: transform 0.4s ease;
+}
+
+.infinity-svg-img:hover {
+  transform: scale(1.04);
+}
+
+.infinity-loop-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawInfinity 2.2s ease-out forwards, infGlowPulse 3s ease-in-out infinite 2.2s alternate;
+}
+
+@keyframes drawInfinity {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes infGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 3px rgba(35, 10, 18, 0.45));
+    transform: scale(0.99);
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(45, 15, 22, 0.75));
+    transform: scale(1.02);
+  }
 }
 
 /* Little golden sparkle star */
@@ -725,7 +780,7 @@ body {
     font-size: 2.4rem;
   }
   .typo-sakib {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
   .typo-gratefulness {
     font-size: 1.9rem;
@@ -740,6 +795,12 @@ body {
     font-size: 2.2rem;
     letter-spacing: 0.16em;
     text-indent: 0.16em;
+  }
+  .typo-eternity {
+    font-size: 3.4rem;
+  }
+  .infinity-svg-img {
+    max-width: 380px;
   }
   .counter-box {
     width: 140px;

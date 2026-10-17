@@ -536,10 +536,70 @@ async function runStorySequence() {
 
   line2.className = 'story-line typo-together';
   await typeText(line2, 'together', 85);
-  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 14);
 
-  // Hold final celebratory page
-  await wait(6000);
+  // Hold Scene 5 duration
+  await wait(4500);
+
+  // Fast Erase before next page
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 6: "Till eternity" -> "2026-infinity sign" with typographic image
+  // ==========================================
+  line1.className = 'story-line typo-eternity';
+  await typeText(line1, 'Till eternity', 75);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.38, 10);
+
+  await wait(900);
+
+  // Render "2026 - infinity sign" with BIG, BOLD, DARK typography & clear dash
+  line2.className = 'story-line infinity-badge-wrap';
+  line2.innerHTML = `
+    <svg class="infinity-svg-img" viewBox="0 0 540 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Deep Dark Tone Gradient for 2026, Dash, and Infinity -->
+        <linearGradient id="darkEternityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1c070d" />
+          <stop offset="35%" stop-color="#2a0f18" />
+          <stop offset="70%" stop-color="#381520" />
+          <stop offset="100%" stop-color="#140409" />
+        </linearGradient>
+        
+        <filter id="darkGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#140409" flood-opacity="0.4"/>
+        </filter>
+      </defs>
+
+      <!-- "2026" in BIG, BOLD, DARK elegant serif typography -->
+      <text x="35" y="103" font-family="'Playfair Display', serif" font-size="88" font-weight="800" fill="url(#darkEternityGrad)" letter-spacing="3" filter="url(#darkGlow)">2026</text>
+
+      <!-- Prominent Dark Dash separator -->
+      <rect x="256" y="74" width="34" height="9" rx="4.5" fill="url(#darkEternityGrad)" filter="url(#darkGlow)" />
+
+      <!-- Dark Infinity Symbol Path -->
+      <path class="infinity-loop-path" d="M 405 78 C 375 48, 312 48, 312 78 C 312 108, 375 108, 405 78 C 435 48, 498 48, 498 78 C 498 108, 435 108, 405 78 Z" fill="none" stroke="url(#darkEternityGrad)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#darkGlow)"/>
+
+      <!-- Delicate romantic dark ruby heart touch on the loop -->
+      <path d="M 505 52 C 505 47, 500 44, 496 44 C 491 44, 488 47, 488 49 C 488 47, 484 44, 480 44 C 475 44, 471 47, 471 52 C 471 59, 488 69, 488 69 C 488 69, 505 59, 505 52 Z" fill="#880e4f" opacity="0.9" />
+
+      <!-- Subtle dark gold/sparkle accents -->
+      <g class="sparkle-stars" fill="#b88219">
+        <path d="M 24 32 Q 24 40, 32 40 Q 24 40, 24 48 Q 24 40, 16 40 Q 24 40, 24 32 Z" opacity="0.8" />
+        <path d="M 518 98 Q 518 105, 525 105 Q 518 105, 518 112 Q 518 105, 511 105 Q 518 105, 518 98 Z" opacity="0.85" />
+      </g>
+    </svg>
+  `;
+
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 26);
+
+  // Hold final page duration
+  await wait(8000);
 
   isStoryRunning = false;
 }
