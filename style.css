@@ -443,6 +443,138 @@ body {
   animation: fadeInRise 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Scene 3: Darker, Rich Golden Glittering Typography for Ha-mim Tasnim & Najmus Sakib Thoha */
+.gold-glitter-text {
+  background: linear-gradient(
+    115deg,
+    #4e2e00 0%,
+    #7d4d03 18%,
+    #c48c1a 38%,
+    #ffdb70 50%,
+    #9c670b 62%,
+    #4a2900 80%,
+    #b88219 100%
+  );
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #5a3500;
+  animation: goldShimmer 3.2s linear infinite, goldGlow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 2px 4px rgba(45, 25, 0, 0.45)) drop-shadow(0 0 10px rgba(196, 140, 26, 0.4));
+  position: relative;
+  display: inline-block;
+  will-change: background-position, filter;
+}
+
+@keyframes goldShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 240% center; }
+}
+
+@keyframes goldGlow {
+  0% {
+    filter: drop-shadow(0 2px 4px rgba(45, 25, 0, 0.45)) drop-shadow(0 0 6px rgba(160, 105, 12, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 3px 8px rgba(45, 25, 0, 0.55)) drop-shadow(0 0 14px rgba(220, 165, 35, 0.65));
+  }
+}
+
+.typo-hamim {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-ampersand {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #0d47a1;
+  text-shadow: 0 4px 18px rgba(13, 71, 161, 0.55), 0 0 10px rgba(33, 150, 243, 0.6);
+  display: inline-block;
+  margin: -6px 0;
+  animation: bluePulse 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes bluePulse {
+  0% {
+    transform: scale(0.92);
+    text-shadow: 0 3px 14px rgba(13, 71, 161, 0.45);
+  }
+  100% {
+    transform: scale(1.1);
+    text-shadow: 0 5px 24px rgba(21, 101, 192, 0.8), 0 0 12px rgba(66, 165, 245, 0.9);
+  }
+}
+
+.typo-sakib {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 4: "with the greatfulness," "love" "and a dream" "together" */
+.typo-gratefulness {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 2.8rem;
+  color: #4e2934;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 18px rgba(233, 30, 99, 0.18), 0 1px 2px #ffffff;
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-love {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.4rem;
+  color: #e91e63;
+  letter-spacing: 0.04em;
+  text-shadow: 0 4px 26px rgba(233, 30, 99, 0.4), 0 0 12px rgba(255, 182, 193, 0.7);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-dream {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.9rem;
+  color: #b71c1c;
+  letter-spacing: 0.05em;
+  text-shadow: 0 3px 20px rgba(240, 98, 146, 0.25);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-together {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  color: #880e4f;
+  text-shadow: 0 4px 28px rgba(216, 27, 96, 0.3), 0 2px 4px rgba(255, 255, 255, 0.9);
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Little golden sparkle star */
+.sparkle-icon {
+  display: inline-block;
+  margin: 0 6px;
+  font-size: 0.7em;
+  color: #ffd700;
+  animation: starTwinkle 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  0% { transform: scale(0.7) rotate(0deg); opacity: 0.6; }
+  100% { transform: scale(1.25) rotate(180deg); opacity: 1; }
+}
+
 /* Typewriter and Erase Caret */
 .caret-cursor {
   display: inline-block;
@@ -586,6 +718,29 @@ body {
   .typo-know {
     font-size: 2.5rem;
   }
+  .typo-hamim {
+    font-size: 3.2rem;
+  }
+  .typo-ampersand {
+    font-size: 2.4rem;
+  }
+  .typo-sakib {
+    font-size: 2.5rem;
+  }
+  .typo-gratefulness {
+    font-size: 1.9rem;
+  }
+  .typo-love {
+    font-size: 3.2rem;
+  }
+  .typo-dream {
+    font-size: 2.1rem;
+  }
+  .typo-together {
+    font-size: 2.2rem;
+    letter-spacing: 0.16em;
+    text-indent: 0.16em;
+  }
   .counter-box {
     width: 140px;
     height: 140px;
@@ -594,3 +749,4 @@ body {
     font-size: 4.2rem;
   }
 }
+

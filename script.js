@@ -357,13 +357,17 @@ function typeText(element, text, speed = 80) {
   });
 }
 
-// Erases text character-by-character backwards (backspace animation)
-function eraseText(element, speed = 45) {
+// Erases text character-by-character backwards (fast snappy backspace animation)
+function eraseText(element, speed = 14) {
   return new Promise((resolve) => {
     let current = element.textContent.trim();
+    if (!current) {
+      element.innerHTML = '';
+      resolve();
+      return;
+    }
     element.innerHTML = `<span class="text-span">${current}</span><span class="caret-cursor"></span>`;
     const textSpan = element.querySelector('.text-span');
-    const cursor = element.querySelector('.caret-cursor');
 
     const interval = setInterval(() => {
       if (current.length > 0) {
@@ -392,65 +396,150 @@ const progressFill = document.getElementById('progressFill');
 const storyStage = document.getElementById('storyStage');
 const line1 = document.getElementById('line1');
 const line2 = document.getElementById('line2');
+const line3 = document.getElementById('line3');
+const line4 = document.getElementById('line4');
 const tapHint = document.getElementById('tapHint');
 const replayBtn = document.getElementById('replayBtn');
 const confettiBtn = document.getElementById('confettiBtn');
 
+function clearAllLines() {
+  [line1, line2, line3, line4].forEach(l => {
+    if (l) {
+      l.className = 'story-line';
+      l.innerHTML = '';
+    }
+  });
+}
+
 let isStoryRunning = false;
-let storyAbortController = null;
 
 async function runStorySequence() {
   if (isStoryRunning) return;
   isStoryRunning = true;
 
   storyStage.classList.add('active');
-  line1.className = 'story-line primary-line';
-  line2.className = 'story-line secondary-line';
-  line1.innerHTML = '';
-  line2.innerHTML = '';
+  clearAllLines();
 
-  // --- SCENE 1: Big "ON", then delay, then typography "22 april, 2026" ---
-  // Step 1: Big "ON"
-  line1.className = 'story-line primary-line typo-on';
-  await typeText(line1, 'ON', 110);
+  // ==========================================
+  // SCENE 1: Big "ON" -> "22 April, 2026"
+  // ==========================================
+  line1.className = 'story-line typo-on';
+  await typeText(line1, 'ON', 90);
   createHeartBurst(window.innerWidth / 2, window.innerHeight * 0.4, 6);
 
-  // Delay before line 2
   await wait(900);
 
-  // Step 2: "22 april, 2026" in elegant romantic typography
-  line2.className = 'story-line secondary-line typo-date';
-  await typeText(line2, '22 April, 2026', 75);
+  line2.className = 'story-line typo-date';
+  await typeText(line2, '22 April, 2026', 65);
   createHeartBurst(window.innerWidth / 2, window.innerHeight * 0.55, 8);
 
-  // Hold the date for the viewer to soak in
-  await wait(2800);
+  // Increased page duration
+  await wait(4200);
 
-  // --- ERASE ANIMATION: Erasing the texts line by line ---
-  // Erase "22 April, 2026"
-  await eraseText(line2, 40);
-  line2.className = 'story-line secondary-line';
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
 
-  // Erase big "ON"
-  await eraseText(line1, 70);
-  line1.className = 'story-line primary-line';
+  await wait(350);
 
-  // Gentle breath between scenes
-  await wait(600);
-
-  // --- SCENE 2: "Two souls on earth" then same page "Got to know each other" ---
-  // Line 1: "Two souls on earth"
-  line1.className = 'story-line primary-line typo-souls';
-  await typeText(line1, 'Two souls on earth', 80);
+  // ==========================================
+  // SCENE 2: "Two souls on earth" -> "Got to know each other"
+  // ==========================================
+  line1.className = 'story-line typo-souls';
+  await typeText(line1, 'Two souls on earth', 65);
   createHeartBurst(window.innerWidth * 0.45, window.innerHeight * 0.42, 6);
 
-  // Delay on the same page
-  await wait(1200);
+  await wait(1000);
 
-  // Line 2: "Got to know each other"
-  line2.className = 'story-line secondary-line typo-know';
-  await typeText(line2, 'Got to know each other', 85);
-  createHeartBurst(window.innerWidth * 0.55, window.innerHeight * 0.55, 12);
+  line2.className = 'story-line typo-know';
+  await typeText(line2, 'Got to know each other', 65);
+  createHeartBurst(window.innerWidth * 0.55, window.innerHeight * 0.55, 10);
+
+  // Increased page duration
+  await wait(4800);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 3: Dark Golden Glittering Names & Royal Blue Ampersand
+  // "Ha-mim Tasnim" -> "&" (blue) -> "Najmus Sakib Thoha"
+  // Active for 5 more seconds (total ~7.8s)
+  // ==========================================
+  line1.className = 'story-line typo-hamim gold-glitter-text';
+  await typeText(line1, 'Ha-mim Tasnim', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 10);
+
+  await wait(600);
+
+  line2.className = 'story-line typo-ampersand';
+  await typeText(line2, '&', 50);
+
+  await wait(600);
+
+  line3.className = 'story-line typo-sakib gold-glitter-text';
+  await typeText(line3, 'Najmus Sakib Thoha', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.65, 16);
+
+  // Active for 5 more seconds as requested (7800ms)
+  await wait(7800);
+
+  // Fast Erase of all 3 lines
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 4: First Split Page
+  // "with the greatfulness," -> "love"
+  // ==========================================
+  line1.className = 'story-line typo-gratefulness';
+  await typeText(line1, 'with the greatfulness,', 65);
+
+  await wait(800);
+
+  line2.className = 'story-line typo-love';
+  await typeText(line2, 'love', 80);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 10);
+
+  // Increased duration for this page
+  await wait(4500);
+
+  // Fast Erase before next page
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 5: Second Split Page
+  // "and a dream" -> "together"
+  // ==========================================
+  line1.className = 'story-line typo-dream';
+  await typeText(line1, 'and a dream', 70);
+
+  await wait(900);
+
+  line2.className = 'story-line typo-together';
+  await typeText(line2, 'together', 85);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold final celebratory page
+  await wait(6000);
 
   isStoryRunning = false;
 }
@@ -465,8 +554,8 @@ function startCountdown() {
 
   countdownOverlay.classList.remove('hidden');
   storyStage.classList.remove('active');
-  line1.innerHTML = '';
-  line2.innerHTML = '';
+  clearAllLines();
+  isStoryRunning = false;
 
   countdownDigit.className = 'counter-number pulse';
   countdownDigit.textContent = '3';
