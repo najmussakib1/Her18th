@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Ha-Mim Tasnim 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Soft Light Glows & Sunbeam Highlights -->
+  <div class="sky-background">
+    <div class="soft-sun"></div>
+    <div class="light-ray ray1"></div>
+    <div class="light-ray ray2"></div>
+    <div class="floating-bokeh" id="bokehContainer"></div>
+  </div>
+
+  <!-- Flying Birds Container (Persists through all screens) -->
+  <div class="birds-sky" id="birdsSky"></div>
+
+  <!-- Floating Hearts on Click Container -->
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <!-- Top Floating Music & Sound Control Bar -->
+  <header class="music-header">
+    <div class="music-pill">
+      <button id="songPlayBtn" class="pill-btn" title="Play / Pause Song">
+        <span id="musicDisc" class="disc-icon spinning">🎵</span>
+        <span class="song-info">
+          <span class="song-title">Ki Naame Deke Bolbo Tomake</span>
+          <span class="song-sub" id="songSourceStatus">Shyamal Mitra • Romantic Melody</span>
+        </span>
+      </button>
+
+      <button id="soundToggleBtn" class="pill-btn mini-btn" title="Toggle Chirping Birds">
+        <span id="soundIcon">🕊️</span>
+      </button>
+
+      <label for="musicFileInput" class="pill-btn mini-btn" title="Load your local music file (music.mp3)">
+        📁
+      </label>
+      <input type="file" id="musicFileInput" accept="audio/*" style="display: none;">
+    </div>
+  </header>
+
+  <!-- Background Music Audio Element (Looks for music.mp3 in the project folder) -->
+  <audio id="bgSong" src="music.mp3" preload="auto" loop></audio>
+
+  <!-- Stage 1: Initial 5-Second Countdown Intro Screen -->
+  <div class="countdown-overlay" id="countdownOverlay">
+    <div class="countdown-content">
+      <div class="pre-title">A special surprise is taking flight...</div>
+      
+      <div class="counter-box">
+        <div class="counter-number" id="countdownDigit">3</div>
+      </div>
+      
+      <div class="countdown-progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <p class="tap-hint" id="tapHint">✨ Tap anywhere to start with music & chirping birds ✨</p>
+    </div>
+  </div>
+
+  <!-- Stage 2: Story Stream Screen (NO BOX, ONLY PURE TEXT FLOATING ON SKY) -->
+  <main class="story-stage" id="storyStage">
+    <div class="story-viewport" id="storyViewport">
+      <!-- Dynamic floating lines will be rendered here by script.js -->
+      <div class="text-stage-inner">
+        <div class="story-line primary-line" id="line1"></div>
+        <div class="story-line secondary-line" id="line2"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Controls & Placeholder for Future Content -->
+    <div class="floating-footer" id="floatingFooter">
+      <div class="love-signature">
+        <span class="tag-date">For Ha-Mim Tasnim • 18th November</span>
+      </div>
+      <div class="control-actions">
+        <button class="footer-btn" id="replayBtn">↺ Replay Story</button>
+        <button class="footer-btn love-btn" id="confettiBtn">💖 Send Love</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
