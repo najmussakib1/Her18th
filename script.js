@@ -598,7 +598,109 @@ async function runStorySequence() {
 
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 26);
 
-  // Hold final page duration
+  // Hold Scene 6 duration
+  await wait(5500);
+
+  // Fast Erase Scene 6 before Scene 7
+  line2.innerHTML = '';
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 7: "later on" -> "history says" -> "My love, my yes, my always for you."
+  // Fast section (not available for more than 3 sec)
+  // ==========================================
+  line1.className = 'story-line typo-later';
+  await typeText(line1, 'later on', 45);
+
+  await wait(350);
+
+  line2.className = 'story-line typo-history';
+  await typeText(line2, 'history says', 45);
+
+  await wait(400);
+
+  line3.className = 'story-line typo-quote-love';
+  await typeText(line3, '"My love, my yes, my always for you."', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 10);
+
+  // Active for not more than 3 seconds as requested
+  await wait(2800);
+
+  // Fast Erase all 3 lines
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 8: "on" -> "14 june, 2026"
+  // This page will be for 3 sec
+  // ==========================================
+  line1.className = 'story-line typo-on';
+  await typeText(line1, 'ON', 75);
+
+  await wait(550);
+
+  line2.className = 'story-line typo-date';
+  await typeText(line2, '14 June, 2026', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 10);
+
+  // Active for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 9: "Time got stuck for the" -> "most adorable"
+  // ==========================================
+  line1.className = 'story-line typo-time-stuck';
+  await typeText(line1, 'Time got stuck for the', 60);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-adorable';
+  await typeText(line2, 'most adorable', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 12);
+
+  // Next page comes after 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 10: Next Page
+  // "most beloved" -> "and most peaceful souls"
+  // ==========================================
+  line1.className = 'story-line typo-beloved';
+  await typeText(line1, 'most beloved', 70);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-peaceful';
+  await typeText(line2, 'and most peaceful souls', 75);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 26);
+
+  // Hold final concluding page
   await wait(8000);
 
   isStoryRunning = false;

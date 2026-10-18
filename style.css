@@ -616,6 +616,84 @@ body {
   }
 }
 
+/* Scene 7: "later on" "history says" "My love, my yes, my always for you." */
+.typo-later {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #6a3e4c;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  text-shadow: 0 2px 12px rgba(233, 30, 99, 0.15);
+  animation: fadeInRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-history {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #3b1722;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(233, 30, 99, 0.2), 0 1px 2px #ffffff;
+  animation: fadeInRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-quote-love {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.2rem;
+  font-weight: 500;
+  color: #c2185b;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 26px rgba(233, 30, 99, 0.4), 0 0 12px rgba(255, 192, 203, 0.6);
+  animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 9: "Time got stuck for the" "most adorable" */
+.typo-time-stuck {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #441e28;
+  letter-spacing: 0.03em;
+  text-shadow: 0 3px 20px rgba(233, 30, 99, 0.2), 0 1px 2px #ffffff;
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-adorable {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4.6rem;
+  font-weight: 700;
+  color: #d81b60;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 28px rgba(216, 27, 96, 0.3), 0 0 10px rgba(255, 182, 193, 0.7);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 10: "most beloved" "and most peaceful souls" */
+.typo-beloved {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  color: #ad1457;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 28px rgba(173, 20, 87, 0.35), 0 0 14px rgba(255, 192, 203, 0.65);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-peaceful {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 3.6rem;
+  color: #240c14;
+  letter-spacing: 0.04em;
+  text-shadow: 0 4px 24px rgba(36, 12, 20, 0.3), 0 1px 3px rgba(255, 255, 255, 0.9);
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Little golden sparkle star */
 .sparkle-icon {
   display: inline-block;
@@ -801,6 +879,27 @@ body {
   }
   .infinity-svg-img {
     max-width: 380px;
+  }
+  .typo-later {
+    font-size: 1.8rem;
+  }
+  .typo-history {
+    font-size: 2.1rem;
+  }
+  .typo-quote-love {
+    font-size: 2.6rem;
+  }
+  .typo-time-stuck {
+    font-size: 2.1rem;
+  }
+  .typo-adorable {
+    font-size: 2.9rem;
+  }
+  .typo-beloved {
+    font-size: 3.2rem;
+  }
+  .typo-peaceful {
+    font-size: 2.3rem;
   }
   .counter-box {
     width: 140px;
