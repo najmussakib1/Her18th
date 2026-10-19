@@ -382,6 +382,25 @@ function eraseText(element, speed = 14) {
   });
 }
 
+// Types text with an inner styled span (e.g. for dark golden "Tasnim")
+async function typeTextWithSpan(element, prefix, spanText, spanClass, speed = 70) {
+  element.innerHTML = '<span class="text-prefix"></span><span class="text-styled"></span><span class="caret-cursor"></span>';
+  const prefixSpan = element.querySelector('.text-prefix');
+  const styledSpan = element.querySelector('.text-styled');
+  styledSpan.className = spanClass;
+  const cursor = element.querySelector('.caret-cursor');
+
+  for (let i = 0; i < prefix.length; i++) {
+    prefixSpan.textContent += prefix[i];
+    await wait(speed);
+  }
+  for (let i = 0; i < spanText.length; i++) {
+    styledSpan.textContent += spanText[i];
+    await wait(speed);
+  }
+  if (cursor) cursor.remove();
+}
+
 // Sleep utility for delay lines
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -700,8 +719,87 @@ async function runStorySequence() {
   await typeText(line2, 'and most peaceful souls', 75);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 26);
 
-  // Hold final concluding page
-  await wait(8000);
+  // Hold Scene 10 for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase Scene 10
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 11: "later on" -> "23 august" -> "another Sunday"
+  // This page will be for 3 sec
+  // ==========================================
+  line1.className = 'story-line typo-later';
+  await typeText(line1, 'later on', 45);
+
+  await wait(350);
+
+  line2.className = 'story-line typo-august';
+  await typeText(line2, '23 August', 60);
+
+  await wait(400);
+
+  line3.className = 'story-line typo-sunday';
+  await typeText(line3, 'another Sunday', 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 10);
+
+  // Active for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase all 3 lines
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 12: "from 8.30 am - 4.30 pm" -> "To 12 pm - 5 pm"
+  // This page will be for 3 sec
+  // ==========================================
+  line1.className = 'story-line typo-time-range';
+  await typeText(line1, 'from 8.30 am - 4.30 pm', 50);
+
+  await wait(500);
+
+  line2.className = 'story-line typo-time-target';
+  await typeText(line2, 'To 12 pm - 5 pm', 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 12);
+
+  // Active for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 13: "roamed around the world" -> "of my Tasnim"
+  // Tasnim in dark golden text, page active for 5 sec
+  // ==========================================
+  line1.className = 'story-line typo-roamed';
+  await typeText(line1, 'roamed around the world', 65);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-tasnim-world';
+  await typeTextWithSpan(line2, 'of my ', 'Tasnim', 'gold-glitter-text', 75);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 30);
+
+  // Active for 5 seconds as requested
+  await wait(5000);
 
   isStoryRunning = false;
 }

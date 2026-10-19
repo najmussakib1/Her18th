@@ -694,6 +694,72 @@ body {
   animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Scene 11: "later on" "23 august" "another Sunday" */
+.typo-august {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  font-weight: 500;
+  color: #c2185b;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 24px rgba(194, 24, 91, 0.35);
+  animation: fadeInRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-sunday {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #3b1722;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
+  animation: fadeInRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 12: "from 8.30 am - 4.30 pm" "To 12 pm-5pm" */
+.typo-time-range {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 3.2rem;
+  color: #552735;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 18px rgba(233, 30, 99, 0.2);
+  animation: fadeInRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-time-target {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #880e4f;
+  letter-spacing: 0.06em;
+  text-shadow: 0 4px 26px rgba(136, 14, 79, 0.3);
+  animation: popIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 13: "roamed around the world" "of my Tasnim" */
+.typo-roamed {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #381520;
+  letter-spacing: 0.03em;
+  text-shadow: 0 3px 18px rgba(233, 30, 99, 0.2), 0 1px 2px #ffffff;
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-tasnim-world {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5.2rem;
+  font-weight: 500;
+  color: #880e4f;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 26px rgba(136, 14, 79, 0.25);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Little golden sparkle star */
 .sparkle-icon {
   display: inline-block;
@@ -900,6 +966,24 @@ body {
   }
   .typo-peaceful {
     font-size: 2.3rem;
+  }
+  .typo-august {
+    font-size: 3.2rem;
+  }
+  .typo-sunday {
+    font-size: 2rem;
+  }
+  .typo-time-range {
+    font-size: 2rem;
+  }
+  .typo-time-target {
+    font-size: 2.2rem;
+  }
+  .typo-roamed {
+    font-size: 2.2rem;
+  }
+  .typo-tasnim-world {
+    font-size: 3.4rem;
   }
   .counter-box {
     width: 140px;
