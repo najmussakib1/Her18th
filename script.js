@@ -401,6 +401,26 @@ async function typeTextWithSpan(element, prefix, spanText, spanClass, speed = 70
   if (cursor) cursor.remove();
 }
 
+// Types multiple styled segments into an element
+async function typeSegments(element, segments, speed = 65) {
+  element.innerHTML = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'caret-cursor';
+  element.appendChild(cursor);
+
+  for (const seg of segments) {
+    const span = document.createElement('span');
+    if (seg.className) span.className = seg.className;
+    element.insertBefore(span, cursor);
+
+    for (let i = 0; i < seg.text.length; i++) {
+      span.textContent += seg.text[i];
+      await wait(speed);
+    }
+  }
+  cursor.remove();
+}
+
 // Sleep utility for delay lines
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -800,6 +820,180 @@ async function runStorySequence() {
 
   // Active for 5 seconds as requested
   await wait(5000);
+
+  // Fast Erase Scene 13
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 14: "The endless time" -> "The Mesmerizing moments" -> "with you"
+  // "Mesmerizing" is specially focused
+  // ==========================================
+  line1.className = 'story-line typo-endless';
+  await typeText(line1, 'The endless time', 60);
+
+  await wait(550);
+
+  line2.className = 'story-line typo-moments-line';
+  await typeSegments(line2, [
+    { text: 'The ' },
+    { text: 'Mesmerizing', className: 'focus-mesmerizing' },
+    { text: ' moments' }
+  ], 60);
+
+  await wait(600);
+
+  line3.className = 'story-line typo-with-you';
+  await typeText(line3, 'with you', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 14);
+
+  // Active for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase all 3 lines
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 15: "made this person fall in love" -> "with the most beautiful, mesmerizing"
+  // ==========================================
+  line1.className = 'story-line typo-fall-love';
+  await typeText(line1, 'made this person fall in love', 60);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-most-beautiful';
+  await typeText(line2, 'with the most beautiful, mesmerizing', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 16);
+
+  // Active for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 16: Grand Reveal "HA-MIM TASNIM"
+  // ==========================================
+  line1.className = 'story-line typo-hamim-caps';
+  await typeText(line1, 'HA-MIM TASNIM', 85);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.5, 36);
+
+  // Hold Scene 16 for ~5.5s
+  await wait(5500);
+
+  // Fast Erase Scene 16
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 17: "suddenly on 24 September" -> "she came on my world"
+  // Fast page as requested
+  // ==========================================
+  line1.className = 'story-line typo-suddenly';
+  await typeText(line1, 'suddenly on 24 September', 45);
+
+  await wait(350);
+
+  line2.className = 'story-line typo-came-world';
+  await typeText(line2, 'she came on my world', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 12);
+
+  // Active for ~2.8 seconds (fast)
+  await wait(2800);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 18: "10am-3pm" -> "with the rain, happiness" -> "but with only a cup of coffee :("
+  // ==========================================
+  line1.className = 'story-line typo-coffee-time';
+  await typeText(line1, '10 am - 3 pm', 50);
+
+  await wait(500);
+
+  line2.className = 'story-line typo-rain-happy';
+  await typeText(line2, 'with the rain, happiness', 55);
+
+  await wait(550);
+
+  line3.className = 'story-line typo-coffee-cup';
+  await typeText(line3, 'but with only a cup of coffee :(', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 14);
+
+  // Active for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase all 3 lines
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 19: "the warmth, the love" -> "is always mesmerizing"
+  // ==========================================
+  line1.className = 'story-line typo-warmth-love';
+  await typeText(line1, 'the warmth, the love', 60);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-always-mesmerizing';
+  await typeText(line2, 'is always mesmerizing', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.52, 16);
+
+  // Active for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 20: "making me fall in love" -> "with you again & again"
+  // ==========================================
+  line1.className = 'story-line typo-making-fall';
+  await typeText(line1, 'making me fall in love', 65);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-again-again';
+  await typeText(line2, 'with you again & again', 75);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 32);
+
+  // Hold concluding page
+  await wait(8000);
 
   isStoryRunning = false;
 }
