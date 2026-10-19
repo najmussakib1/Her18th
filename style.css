@@ -26,6 +26,7 @@ body {
   position: relative;
   user-select: none;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 3.2s cubic-bezier(0.4, 0, 0.2, 1), color 3.2s ease;
 }
 
 /* Ambient Sky Background & Soft Lights */
@@ -35,6 +36,7 @@ body {
   background: radial-gradient(circle at 75% 20%, #ffffff 0%, #fff0f3 25%, #fedae2 60%, #fad4de 100%);
   overflow: hidden;
   z-index: 1;
+  transition: background 3.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .soft-sun {
@@ -47,6 +49,7 @@ body {
   border-radius: 50%;
   filter: blur(14px);
   animation: sunGlow 8s ease-in-out infinite alternate;
+  transition: background 3.2s cubic-bezier(0.4, 0, 0.2, 1), filter 3.2s ease;
 }
 
 @keyframes sunGlow {
@@ -91,6 +94,9 @@ body {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 220, 230, 0.35) 60%, transparent 80%);
   animation: floatUpward linear infinite;
+  filter: blur(8px);
+  pointer-events: none;
+  transition: background 3.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 3.2s ease, border 3.2s ease, filter 3.2s ease;
 }
 
 @keyframes floatUpward {
@@ -123,6 +129,11 @@ body {
 
 .bird-svg {
   filter: drop-shadow(0 4px 6px rgba(180, 100, 120, 0.2));
+  transition: filter 3.2s ease;
+}
+
+.bird-svg path {
+  transition: fill 3.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bird-wing-left {
@@ -954,6 +965,310 @@ body {
   animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ========================================================
+   THEME MIDNIGHT: Black & Blueish Sky, Golden Bubbles, Maroon Birds
+   ======================================================== */
+body.theme-midnight {
+  background-color: #040813;
+  color: #fff2f5;
+}
+
+body.theme-midnight .sky-background {
+  background: radial-gradient(circle at 75% 20%, #152748 0%, #0d1b34 25%, #071020 58%, #02050c 100%);
+}
+
+body.theme-midnight .soft-sun {
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.85) 0%, rgba(212, 160, 23, 0.35) 45%, rgba(255, 215, 0, 0) 75%);
+  filter: blur(22px);
+}
+
+body.theme-midnight .ray1 {
+  background: conic-gradient(from 180deg at 80% 15%, transparent 0deg, rgba(255, 215, 0, 0.08) 15deg, transparent 35deg, rgba(255, 215, 0, 0.06) 50deg, transparent 70deg);
+}
+
+body.theme-midnight .ray2 {
+  background: conic-gradient(from 190deg at 80% 15%, transparent 0deg, rgba(50, 120, 240, 0.08) 20deg, transparent 40deg, rgba(255, 215, 0, 0.05) 60deg, transparent 80deg);
+}
+
+/* Soft Blurred Golden Bubbles in Midnight Mode */
+body.theme-midnight .bokeh-orb {
+  background: radial-gradient(circle at 40% 40%, rgba(255, 238, 160, 0.5) 0%, rgba(212, 160, 23, 0.28) 45%, rgba(184, 134, 11, 0.08) 75%, transparent 90%);
+  border: none;
+  box-shadow: none;
+  filter: blur(12px);
+  opacity: 0.65;
+}
+
+/* Maroon / Deep Burgundy Birds in Midnight Mode */
+body.theme-midnight .bird-svg path {
+  fill: #80132b !important;
+}
+
+body.theme-midnight .bird-svg {
+  filter: drop-shadow(0 4px 10px rgba(128, 19, 43, 0.55));
+}
+
+/* Controls in Midnight Mode */
+body.theme-midnight .music-pill {
+  background: rgba(10, 20, 38, 0.85);
+  border-color: rgba(255, 215, 0, 0.45);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 215, 0, 0.25);
+}
+
+body.theme-midnight .song-title {
+  color: #ffecb3;
+}
+
+body.theme-midnight .song-sub {
+  color: #ffd54f;
+}
+
+body.theme-midnight .pill-btn {
+  color: #fff2f5;
+}
+
+body.theme-midnight .love-signature .tag-date {
+  color: #ffd54f;
+  background: rgba(10, 20, 38, 0.75);
+  border-color: rgba(255, 215, 0, 0.35);
+}
+
+body.theme-midnight .footer-btn {
+  background: rgba(10, 20, 38, 0.85);
+  color: #fff2f5;
+  border-color: rgba(255, 215, 0, 0.35);
+}
+
+/* Scene 21: Bengali Romantic Wedding Card Typography (NO RED, NO GLOW ON GOLD) */
+.typo-bangla-1 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: #f8fafc;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  line-height: 1.45;
+}
+
+.typo-bangla-2 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 4.1rem;
+  font-weight: 400;
+  color: #e2e8f0;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  line-height: 1.45;
+}
+
+.typo-bangla-gold {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 4.6rem;
+  font-weight: 400;
+  background: linear-gradient(
+    115deg,
+    #d4af37 0%,
+    #fff4a8 25%,
+    #f0c33a 50%,
+    #ffe082 75%,
+    #d4af37 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: none; /* NO GLOW AS REQUESTED */
+  text-shadow: none; /* NO GLOW AS REQUESTED */
+  animation: goldWeddingShimmer 5s ease-in-out infinite alternate, popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  line-height: 1.45;
+}
+
+@keyframes goldWeddingShimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Golden Bengali Word - Crisp, metallic, no glow, no red */
+.gold-bengali-word {
+  background: linear-gradient(
+    115deg,
+    #d4af37 0%,
+    #fff5a6 28%,
+    #f0c33a 55%,
+    #ffe27a 80%,
+    #d4af37 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  font-weight: 700;
+  filter: none !important;
+  text-shadow: none !important;
+  display: inline-block;
+  animation: goldWeddingShimmer 4s ease-in-out infinite alternate;
+}
+
+/* Scene 22: Sharp Bengali Typography (Mosque veranda memory) */
+.typo-bangla-sharp-1 {
+  font-family: 'Noto Serif Bengali', 'Tiro Bangla', serif;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-bangla-sharp-2 {
+  font-family: 'Noto Serif Bengali', 'Tiro Bangla', serif;
+  font-size: 3.1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 23: Monsoon Walk & Best Fate */
+.typo-rain-walk-1 {
+  font-family: 'Noto Serif Bengali', 'Tiro Bangla', serif;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-rain-walk-2 {
+  font-family: 'Noto Serif Bengali', 'Tiro Bangla', serif;
+  font-size: 3.1rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 24: "সবচেয়ে সুন্দর" "মানুষের সাথে.." */
+.typo-most-beautiful-bn-1 {
+  font-family: 'Galada', 'Noto Serif Bengali', serif;
+  font-size: 4.2rem;
+  font-weight: 500;
+  color: #fcefc7;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-most-beautiful-bn-2 {
+  font-family: 'Galada', 'Noto Serif Bengali', serif;
+  font-size: 4.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 25: Names Written Together */
+.typo-written-together-1 {
+  font-family: 'Playfair Display', 'Lora', serif;
+  font-style: italic;
+  font-size: 3.0rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-written-together-2 {
+  font-family: 'Lora', 'Playfair Display', serif;
+  font-size: 2.7rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 26 (Grand Finale): NAJMUS SAKIB THOHA loves HA-MIM TASNIM */
+body.theme-midnight .gold-glitter-text {
+  background: linear-gradient(
+    115deg,
+    #cf9d39 0%,
+    #ffea88 22%,
+    #ffd54f 45%,
+    #fff8c5 62%,
+    #e5a93b 80%,
+    #cf9d39 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.35));
+  animation: goldShimmer 4s ease-in-out infinite alternate;
+}
+
+.typo-finale-sakib {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.3rem, 5.8vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: scaleY(1.15);
+  display: inline-block;
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-finale-loves {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.8rem;
+  font-weight: 500;
+  color: #fff8e7;
+  letter-spacing: 0.05em;
+  margin: 4px 0;
+  text-shadow: 0 2px 14px rgba(255, 248, 231, 0.35);
+  animation: popIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-finale-hamim {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.3rem, 5.8vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: scaleY(1.15);
+  display: inline-block;
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Little golden sparkle star */
 .sparkle-icon {
   display: inline-block;
@@ -1226,6 +1541,52 @@ body {
   }
   .typo-again-again {
     font-size: 3.4rem;
+  }
+  .typo-bangla-1 {
+    font-size: 2.3rem;
+  }
+  .typo-bangla-2 {
+    font-size: 2.5rem;
+  }
+  .typo-bangla-gold {
+    font-size: 2.7rem;
+  }
+  .typo-bangla-sharp-1 {
+    font-size: 1.85rem;
+  }
+  .typo-bangla-sharp-2 {
+    font-size: 2.1rem;
+  }
+  .typo-rain-walk-1 {
+    font-size: 2.1rem;
+  }
+  .typo-rain-walk-2 {
+    font-size: 2.1rem;
+  }
+  .typo-most-beautiful-bn-1 {
+    font-size: 2.7rem;
+  }
+  .typo-most-beautiful-bn-2 {
+    font-size: 3rem;
+  }
+  .typo-written-together-1 {
+    font-size: 1.95rem;
+  }
+  .typo-written-together-2 {
+    font-size: 1.85rem;
+  }
+  .typo-finale-sakib {
+    font-size: clamp(1.4rem, 5.5vw, 2.4rem);
+    letter-spacing: 0.1em;
+    text-indent: 0.1em;
+  }
+  .typo-finale-loves {
+    font-size: 3.4rem;
+  }
+  .typo-finale-hamim {
+    font-size: clamp(1.4rem, 5.5vw, 2.4rem);
+    letter-spacing: 0.1em;
+    text-indent: 0.1em;
   }
   .counter-box {
     width: 140px;

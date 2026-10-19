@@ -277,7 +277,7 @@ function initBirdsSky() {
 function initBokeh() {
   const container = document.getElementById('bokehContainer');
   container.innerHTML = '';
-  const count = 18;
+  const count = 7; // Significantly reduced bubble count as requested
 
   for (let i = 0; i < count; i++) {
     const orb = document.createElement('div');
@@ -992,8 +992,189 @@ async function runStorySequence() {
   await typeText(line2, 'with you again & again', 75);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 32);
 
-  // Hold concluding page
-  await wait(8000);
+  // Hold Scene 20 for ~4.5 seconds
+  await wait(4500);
+
+  // Fast Erase Scene 20
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(250);
+
+  // Smooth transition of background to black & blueish color, golden bubbles, and maroon birds
+  document.body.classList.add('theme-midnight');
+
+  // Allow the smooth 3-second background transition to wash over
+  await wait(2200);
+
+  // ==========================================
+  // SCENE 21: Bengali Romantic Wedding Card Calligraphy
+  // "কল্পনারই একদেশে," "যাচ্ছি তোমার আবেশে" "আমি তোমায় নিয়ে, পৃথিবী সাজাই" (golden)
+  // ==========================================
+  line1.className = 'story-line typo-bangla-1';
+  await typeText(line1, 'কল্পনারই একদেশে,', 65);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-bangla-2';
+  await typeText(line2, 'যাচ্ছি তোমার আবেশে', 65);
+
+  await wait(800);
+
+  line3.className = 'story-line typo-bangla-gold';
+  await typeText(line3, 'আমি তোমায় নিয়ে, পৃথিবী সাজাই', 75);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 36);
+
+  // Hold Scene 21 for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase Scene 21
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 22: Sharp Bengali Typography (Mosque veranda memory)
+  // "মসজিদের বারান্দায় বৃষ্টির মধ্যে তাসনীমকে দেখে মুগ্ধ হওয়া"
+  // "তাসনীম নাম ধরে একবারমাত্র ডাকা" (তাসনীম is golden)
+  // ==========================================
+  line1.className = 'story-line typo-bangla-sharp-1';
+  await typeSegments(line1, [
+    { text: 'মসজিদের বারান্দায় বৃষ্টির মধ্যে ' },
+    { text: 'তাসনীমকে', className: 'gold-bengali-word' },
+    { text: ' দেখে মুগ্ধ হওয়া' }
+  ], 55);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-bangla-sharp-2';
+  await typeSegments(line2, [
+    { text: 'তাসনীম', className: 'gold-bengali-word' },
+    { text: ' নাম ধরে একবারমাত্র ডাকা' }
+  ], 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 18);
+
+  // Hold Scene 22
+  await wait(4500);
+
+  // Fast Erase Scene 22
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 23: Monsoon Walk & Best Fate
+  // "ঝুম বৃষ্টিতে ভিজে যাওয়া থেকে" -> "সবচেয়ে সুন্দর দিন সবচেয়ে ভাল ভাগ্য নিয়ে"
+  // ==========================================
+  line1.className = 'story-line typo-rain-walk-1';
+  await typeText(line1, 'ঝুম বৃষ্টিতে ভিজে যাওয়া থেকে', 60);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-rain-walk-2';
+  await typeText(line2, 'সবচেয়ে সুন্দর দিন সবচেয়ে ভাল ভাগ্য নিয়ে', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 20);
+
+  // Hold Scene 23
+  await wait(4500);
+
+  // Fast Erase Scene 23
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 24: "সবচেয়ে সুন্দর" -> "মানুষের সাথে.."
+  // ==========================================
+  line1.className = 'story-line typo-most-beautiful-bn-1';
+  await typeText(line1, 'সবচেয়ে সুন্দর', 65);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-most-beautiful-bn-2';
+  await typeText(line2, 'মানুষের সাথে..', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 24
+  await wait(4000);
+
+  // Fast Erase Scene 24
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 25: Names Written Together
+  // "Tasnim, our names will be written together" -> "with the grace that we had the very first day"
+  // ==========================================
+  line1.className = 'story-line typo-written-together-1';
+  await typeText(line1, 'Tasnim, our names will be written together', 55);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-written-together-2';
+  await typeText(line2, 'with the grace that we had the very first day', 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 25
+  await wait(4500);
+
+  // Fast Erase Scene 25
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 26 (Grand Finale): Golden Glittering Names & Eternal Love
+  // "NAJMUS SAKIB THOHA" -> "loves" -> "HA-MIM TASNIM"
+  // ==========================================
+  line1.className = 'story-line typo-finale-sakib gold-glitter-text';
+  await typeText(line1, 'NAJMUS SAKIB THOHA', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 22);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-finale-loves';
+  await typeText(line2, 'loves', 75);
+
+  await wait(650);
+
+  line3.className = 'story-line typo-finale-hamim gold-glitter-text';
+  await typeText(line3, 'HA-MIM TASNIM', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.65, 38);
+
+  // Continuous floating celebration bursts
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth * (0.2 + Math.random() * 0.6),
+        window.innerHeight * (0.25 + Math.random() * 0.5),
+        16
+      );
+    }, (i + 1) * 750);
+  }
+
+  // Grand Finale hold
+  await wait(14000);
 
   isStoryRunning = false;
 }
@@ -1006,6 +1187,7 @@ function startCountdown() {
   if (countdownTimer) clearTimeout(countdownTimer);
   if (progressInterval) clearInterval(progressInterval);
 
+  document.body.classList.remove('theme-midnight');
   countdownOverlay.classList.remove('hidden');
   storyStage.classList.remove('active');
   clearAllLines();
