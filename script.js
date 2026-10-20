@@ -1061,8 +1061,8 @@ async function runStorySequence() {
   ], 60);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 18);
 
-  // Hold Scene 22
-  await wait(4500);
+  // Hold Scene 22 (2 seconds as requested)
+  await wait(2000);
 
   // Fast Erase Scene 22
   await eraseText(line2, 14);
@@ -1085,8 +1085,8 @@ async function runStorySequence() {
   await typeText(line2, 'সবচেয়ে সুন্দর দিন সবচেয়ে ভাল ভাগ্য নিয়ে', 60);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 20);
 
-  // Hold Scene 23
-  await wait(4500);
+  // Hold Scene 23 (2 seconds as requested)
+  await wait(2000);
 
   // Fast Erase Scene 23
   await eraseText(line2, 14);
@@ -1108,8 +1108,8 @@ async function runStorySequence() {
   await typeText(line2, 'মানুষের সাথে..', 70);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
 
-  // Hold Scene 24
-  await wait(4000);
+  // Hold Scene 24 (2 seconds as requested)
+  await wait(2000);
 
   // Fast Erase Scene 24
   await eraseText(line2, 14);
@@ -1129,11 +1129,11 @@ async function runStorySequence() {
   await wait(750);
 
   line2.className = 'story-line typo-written-together-2';
-  await typeText(line2, 'with the grace that we had the very first day', 55);
+  await typeText(line2, 'with the grace that we had from the very first day', 55);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
 
-  // Hold Scene 25
-  await wait(4500);
+  // Hold Scene 25 (2 seconds as requested)
+  await wait(2000);
 
   // Fast Erase Scene 25
   await eraseText(line2, 14);
@@ -1145,10 +1145,10 @@ async function runStorySequence() {
 
   // ==========================================
   // SCENE 26 (Grand Finale): Golden Glittering Names & Eternal Love
-  // "NAJMUS SAKIB THOHA" -> "loves" -> "HA-MIM TASNIM"
+  // "Najmus Sakib Thoha" -> "loves" -> "Ha-Mim Tasnim" (interchanged fonts)
   // ==========================================
   line1.className = 'story-line typo-finale-sakib gold-glitter-text';
-  await typeText(line1, 'NAJMUS SAKIB THOHA', 65);
+  await typeText(line1, 'Najmus Sakib Thoha', 65);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 22);
 
   await wait(650);
@@ -1159,7 +1159,7 @@ async function runStorySequence() {
   await wait(650);
 
   line3.className = 'story-line typo-finale-hamim gold-glitter-text';
-  await typeText(line3, 'HA-MIM TASNIM', 65);
+  await typeText(line3, 'Ha-Mim Tasnim', 65);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.65, 38);
 
   // Continuous floating celebration bursts
