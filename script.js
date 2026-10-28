@@ -1173,7 +1173,68 @@ async function runStorySequence() {
     }, (i + 1) * 750);
   }
 
-  // Grand Finale hold
+  // Hold Scene 26 for 7 seconds as requested
+  await wait(7000);
+
+  // Fast Erase Scene 26
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 27: Curvy Bangla Poetry
+  // "স্বপ্নে আমার তোমার ছবি" -> "চুপটি করে আসে"
+  // ==========================================
+  line1.className = 'story-line typo-curvy-dream-1';
+  await typeText(line1, 'স্বপ্নে আমার তোমার ছবি', 60);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-curvy-dream-2';
+  await typeText(line2, 'চুপটি করে আসে', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 27 for 2.5 seconds as requested
+  await wait(2500);
+
+  // Fast Erase Scene 27
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 28: Curvy Bangla Concluding Poetry
+  // "সকাল থেকে রাতের শেষে" -> "থাকো আমার পাশে"
+  // ==========================================
+  line1.className = 'story-line typo-curvy-beside-1';
+  await typeText(line1, 'সকাল থেকে রাতের শেষে', 60);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-curvy-beside-2';
+  await typeText(line2, 'থাকো আমার পাশে', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 36);
+
+  // Continuous celebration heart bursts
+  for (let i = 0; i < 4; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth * (0.2 + Math.random() * 0.6),
+        window.innerHeight * (0.25 + Math.random() * 0.5),
+        16
+      );
+    }, (i + 1) * 800);
+  }
+
+  // Final hold
   await wait(14000);
 
   isStoryRunning = false;

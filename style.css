@@ -1265,6 +1265,52 @@ body.theme-midnight .gold-glitter-text {
   animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Scene 27: Curvy Bangla Poetry - "স্বপ্নে আমার তোমার ছবি" "চুপটি করে আসে" */
+.typo-curvy-dream-1 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 3.9rem;
+  font-weight: 400;
+  color: #fcefc7;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65), 0 0 16px rgba(252, 239, 199, 0.25);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-curvy-dream-2 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 4.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65), 0 0 16px rgba(255, 255, 255, 0.25);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 28: Curvy Bangla Concluding Poetry - "সকাল থেকে রাতের শেষে" "থাকো আমার পাশে" */
+.typo-curvy-beside-1 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 3.9rem;
+  font-weight: 400;
+  color: #f1f5f9;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-curvy-beside-2 {
+  font-family: 'Galada', 'Noto Serif Bengali', cursive, serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: #ffe082;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 224, 130, 0.35);
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Little golden sparkle star */
 .sparkle-icon {
   display: inline-block;
@@ -1585,6 +1631,18 @@ body.theme-midnight .gold-glitter-text {
     font-size: clamp(2.3rem, 7.5vw, 3.4rem);
     letter-spacing: 0.02em;
     text-indent: 0;
+  }
+  .typo-curvy-dream-1 {
+    font-size: 2.3rem;
+  }
+  .typo-curvy-dream-2 {
+    font-size: 2.5rem;
+  }
+  .typo-curvy-beside-1 {
+    font-size: 2.3rem;
+  }
+  .typo-curvy-beside-2 {
+    font-size: 2.7rem;
   }
   .counter-box {
     width: 140px;
