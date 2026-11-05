@@ -1405,6 +1405,35 @@ body.theme-midnight .gold-glitter-text {
   animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Radiant shimmer styling for "Your Thoha" */
+.gold-shimmer-radiant {
+  background: linear-gradient(
+    115deg,
+    #ffe082 0%,
+    #fff9c4 25%,
+    #ffd54f 50%,
+    #ffecb3 75%,
+    #ffe082 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.75)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.45));
+  animation: goldShimmer 3.5s ease-in-out infinite alternate;
+  display: inline-block;
+}
+
+/* Curvy font for "Thoha" specifically */
+.font-thoha-curvy {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-style: normal;
+  font-size: 1.35em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  vertical-align: -0.05em;
+}
+
 .typo-every-ending {
   font-family: 'Lora', serif;
   font-style: italic;
@@ -1502,6 +1531,12 @@ body.theme-midnight .gold-glitter-text {
 }
 
 .gold-name-inline {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-style: normal;
+  font-size: 1.35em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  vertical-align: -0.06em;
   background: linear-gradient(
     115deg,
     #cf9d39 0%,
@@ -1515,11 +1550,105 @@ body.theme-midnight .gold-glitter-text {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #ffd700;
-  font-weight: 700;
-  font-family: inherit;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.65)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
   display: inline-block;
   animation: goldShimmer 4s ease-in-out infinite alternate;
+}
+
+/* Scene 35: "I want to be your forever person, Tasnim" "Your greatest adventure" */
+.typo-forever-person {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-greatest-adventure {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.8rem;
+  font-weight: 500;
+  color: #ffe082;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 224, 130, 0.35);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 36: "The one who chooses you" "again & again, without hesitation" */
+.typo-chooses-you {
+  font-family: 'Lora', 'Playfair Display', serif;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-without-hesitation {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3.1rem;
+  font-weight: 600;
+  color: #ffd54f;
+  letter-spacing: 0.03em;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7), 0 0 14px rgba(255, 213, 79, 0.3);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Golden and Curvy Font for Scenes 37 & 38 */
+.gold-curvy-text {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: linear-gradient(
+    115deg,
+    #cf9d39 0%,
+    #ffea88 22%,
+    #ffd54f 45%,
+    #fff8c5 62%,
+    #e5a93b 80%,
+    #cf9d39 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.65)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+  animation: goldShimmer 4s ease-in-out infinite alternate;
+  display: inline-block;
+  line-height: 1.35;
+}
+
+/* Scene 37 */
+.typo-scene37-line {
+  font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+  margin: 4px 0;
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 38 (Grand Finale) */
+.typo-scene38-line1 {
+  font-size: clamp(2.1rem, 4.3vw, 3.5rem);
+  margin: 4px 0;
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-scene38-line2 {
+  font-size: clamp(2.3rem, 4.7vw, 3.8rem);
+  margin: 4px 0;
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-scene38-line3 {
+  font-size: clamp(2.5rem, 5.2vw, 4.2rem);
+  margin: 6px 0;
+  animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Little golden sparkle star */
@@ -1897,6 +2026,30 @@ body.theme-midnight .gold-glitter-text {
   }
   .typo-find-person {
     font-size: 1.95rem;
+  }
+  .typo-forever-person {
+    font-size: 1.85rem;
+  }
+  .typo-greatest-adventure {
+    font-size: 3.2rem;
+  }
+  .typo-chooses-you {
+    font-size: 1.85rem;
+  }
+  .typo-without-hesitation {
+    font-size: 2.1rem;
+  }
+  .typo-scene37-line {
+    font-size: clamp(1.6rem, 4.8vw, 2.3rem);
+  }
+  .typo-scene38-line1 {
+    font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+  }
+  .typo-scene38-line2 {
+    font-size: clamp(1.6rem, 4.8vw, 2.4rem);
+  }
+  .typo-scene38-line3 {
+    font-size: clamp(1.7rem, 5.2vw, 2.6rem);
   }
   .counter-box {
     width: 140px;

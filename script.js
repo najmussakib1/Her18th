@@ -1304,7 +1304,11 @@ async function runStorySequence() {
   await wait(650);
 
   line2.className = 'story-line typo-thoha-universe';
-  await typeText(line2, 'Your Thoha wants you in every universe', 50);
+  await typeSegments(line2, [
+    { text: 'Your '},
+    { text: 'Thoha', className: 'gold-shimmer-radiant font-thoha-curvy' },
+    { text: ' wants you in every universe' }
+  ], 50);
 
   await wait(700);
 
@@ -1384,17 +1388,127 @@ async function runStorySequence() {
   line2.className = 'story-line typo-find-person';
   await typeSegments(line2, [
     { text: 'Najmus Sakib Thoha', className: 'gold-name-inline' },
-    { text: ' will find his very own person' }
+    { text: ' will always find his very own person' }
   ], 55);
   createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 38);
 
-  // Grand celebratory floating heart bursts
+  // Hold Scene 34
+  await wait(3000);
+
+  // Fast Erase Scene 34
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 35: "I want to be your forever person, Tasnim" -> "Your greatest adventure" (2 sec)
+  // ==========================================
+  line1.className = 'story-line typo-forever-person';
+  await typeText(line1, 'I want to be your forever person, Tasnim', 50);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-greatest-adventure';
+  await typeText(line2, 'Your greatest adventure', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 22);
+
+  // Hold Scene 35 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 35
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 36: "The one who chooses you" -> "again & again, without hesitation" (3 sec)
+  // ==========================================
+  line1.className = 'story-line typo-chooses-you';
+  await typeText(line1, 'The one who chooses you', 55);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-without-hesitation';
+  await typeText(line2, 'again & again, without hesitation', 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 36 for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase Scene 36
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 37: Golden and Curvy Font (3 sec)
+  // "If the universe resets a million times"
+  // "if time rewrites every story,"
+  // "and if destiny gives me a million beginnings,"
+  // ==========================================
+  line1.className = 'story-line gold-curvy-text typo-scene37-line';
+  await typeText(line1, 'If the universe resets a million times', 50);
+
+  await wait(650);
+
+  line2.className = 'story-line gold-curvy-text typo-scene37-line';
+  await typeText(line2, 'if time rewrites every story,', 50);
+
+  await wait(650);
+
+  line3.className = 'story-line gold-curvy-text typo-scene37-line';
+  await typeText(line3, 'and if destiny gives me a million beginnings,', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.65, 28);
+
+  // Hold Scene 37 for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase Scene 37
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 38 (Grand Finale): Same Golden and Curvy Font
+  // "I would still spend every single one searching for you"
+  // "You are not just the love of my life"
+  // "You're the life that I want to love, eternally.."
+  // ==========================================
+  line1.className = 'story-line gold-curvy-text typo-scene38-line1';
+  await typeText(line1, 'I would still spend every single one searching for you', 50);
+
+  await wait(700);
+
+  line2.className = 'story-line gold-curvy-text typo-scene38-line2';
+  await typeText(line2, 'You are not just the love of my life', 55);
+
+  await wait(750);
+
+  line3.className = 'story-line gold-curvy-text typo-scene38-line3';
+  await typeText(line3, "You're the life that I want to love, eternally..", 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.6, 40);
+
+  // Continuous celebration floating heart bursts
   for (let i = 0; i < 6; i++) {
     setTimeout(() => {
       createHeartBurst(
         window.innerWidth * (0.2 + Math.random() * 0.6),
         window.innerHeight * (0.25 + Math.random() * 0.5),
-        18
+        20
       );
     }, (i + 1) * 750);
   }
