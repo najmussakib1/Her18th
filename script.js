@@ -1234,8 +1234,173 @@ async function runStorySequence() {
     }, (i + 1) * 800);
   }
 
+  // Hold Scene 28
+  await wait(3500);
+
+  // Fast Erase Scene 28
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 29: "Tasnim" -> "If time was an ocean, i want us to be its infinity" (3 sec)
+  // ==========================================
+  line1.className = 'story-line typo-tasnim-ocean';
+  await typeText(line1, 'Tasnim', 65);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-ocean-infinity';
+  await typeText(line2, 'If time was an ocean, i want us to be its infinity', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 20);
+
+  // Hold Scene 29 for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase Scene 29
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 30: "And if the universe has countless possibilities,"
+  // "I want every single one of them to lead me back to you" (2 sec)
+  // ==========================================
+  line1.className = 'story-line typo-universe-possibilities';
+  await typeText(line1, 'And if the universe has countless possibilities,', 50);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-lead-back';
+  await typeText(line2, 'I want every single one of them to lead me back to you', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 22);
+
+  // Hold Scene 30 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 30
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 31: Glowing Golden "Tasnim"
+  // "Your Thoha wants you in every universe"
+  // "every possibility, every beginning, and every ending..." (3 sec)
+  // ==========================================
+  line1.className = 'story-line typo-tasnim-gold-glow';
+  await typeText(line1, 'Tasnim', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 18);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-thoha-universe';
+  await typeText(line2, 'Your Thoha wants you in every universe', 50);
+
+  await wait(700);
+
+  line3.className = 'story-line typo-every-ending';
+  await typeText(line3, 'every possibility, every beginning, and every ending...', 50);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.65, 24);
+
+  // Hold Scene 31 for 3 seconds as requested
+  await wait(3000);
+
+  // Fast Erase Scene 31
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 32: Golden "I choose you" -> "My love" (2 sec)
+  // ==========================================
+  line1.className = 'story-line typo-choose-you-gold';
+  await typeText(line1, 'I choose you', 65);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.42, 22);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-my-love';
+  await typeText(line2, 'My love', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.58, 26);
+
+  // Hold Scene 32 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 32
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 33: "In perpetuity.." -> "In infinity"
+  // ==========================================
+  line1.className = 'story-line typo-perpetuity';
+  await typeText(line1, 'In perpetuity..', 60);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-in-infinity';
+  await typeText(line2, 'In infinity', 70);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 33 for 2.5 seconds
+  await wait(2500);
+
+  // Fast Erase Scene 33
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 34: "In eternity.."
+  // "Najmus Sakib Thoha will find his very own person" (Najmus Sakib Thoha golden)
+  // ==========================================
+  line1.className = 'story-line typo-eternity-lead';
+  await typeText(line1, 'In eternity..', 65);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-find-person';
+  await typeSegments(line2, [
+    { text: 'Najmus Sakib Thoha', className: 'gold-name-inline' },
+    { text: ' will find his very own person' }
+  ], 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 38);
+
+  // Grand celebratory floating heart bursts
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth * (0.2 + Math.random() * 0.6),
+        window.innerHeight * (0.25 + Math.random() * 0.5),
+        18
+      );
+    }, (i + 1) * 750);
+  }
+
   // Final hold
-  await wait(14000);
+  await wait(16000);
 
   isStoryRunning = false;
 }

@@ -1311,6 +1311,217 @@ body.theme-midnight .gold-glitter-text {
   animation: popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Scene 29: "Tasnim" "If time was an ocean, i want us to be its infinity" */
+.typo-tasnim-ocean {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5.4rem;
+  font-weight: 500;
+  color: #fff8e7;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 14px rgba(255, 248, 231, 0.45);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-ocean-infinity {
+  font-family: 'Playfair Display', 'Lora', serif;
+  font-style: italic;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 30: "And if the universe has countless possibilities," "I want every single one of them to lead me back to you" */
+.typo-universe-possibilities {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-lead-back {
+  font-family: 'Lora', serif;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #fcefc7;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7), 0 0 16px rgba(252, 239, 199, 0.25);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 31: Glowing Golden "Tasnim", "Your Thoha wants you in every universe", "every possibility, every beginning, and every ending..." */
+.typo-tasnim-gold-glow {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5.6rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: linear-gradient(
+    115deg,
+    #ffe082 0%,
+    #fff9c4 25%,
+    #ffd54f 50%,
+    #ffecb3 75%,
+    #ffe082 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.85)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.6)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+  animation: goldGlowShimmer 3.5s ease-in-out infinite alternate, popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+@keyframes goldGlowShimmer {
+  0% {
+    background-position: 0% center;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.45));
+  }
+  100% {
+    background-position: 200% center;
+    filter: drop-shadow(0 0 14px rgba(255, 225, 60, 0.95)) drop-shadow(0 0 32px rgba(255, 215, 0, 0.75));
+  }
+}
+
+.typo-thoha-universe {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-every-ending {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 2.45rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 32: Golden "I choose you", "My love" */
+.typo-choose-you-gold {
+  font-family: 'Montserrat', 'Playfair Display', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    115deg,
+    #cf9d39 0%,
+    #ffea88 22%,
+    #ffd54f 45%,
+    #fff8c5 62%,
+    #e5a93b 80%,
+    #cf9d39 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 14px rgba(255, 215, 0, 0.4));
+  animation: goldShimmer 4s ease-in-out infinite alternate, popIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+}
+
+.typo-my-love {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.8rem;
+  font-weight: 500;
+  color: #fff8e7;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  text-shadow: 0 2px 14px rgba(255, 248, 231, 0.45);
+  animation: popIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 33: "In perpetuity..", "In infinity" */
+.typo-perpetuity {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3.4rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.05em;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-in-infinity {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  color: #ffe082;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.7), 0 0 18px rgba(255, 224, 130, 0.35);
+  animation: popIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scene 34: "In eternity..", "Najmus Sakib Thoha will find his very own person" */
+.typo-eternity-lead {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+  animation: fadeInRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-find-person {
+  font-family: 'Lora', 'Playfair Display', serif;
+  font-size: 2.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7);
+  animation: fadeInRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.gold-name-inline {
+  background: linear-gradient(
+    115deg,
+    #cf9d39 0%,
+    #ffea88 22%,
+    #ffd54f 45%,
+    #fff8c5 62%,
+    #e5a93b 80%,
+    #cf9d39 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffd700;
+  font-weight: 700;
+  font-family: inherit;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  display: inline-block;
+  animation: goldShimmer 4s ease-in-out infinite alternate;
+}
+
 /* Little golden sparkle star */
 .sparkle-icon {
   display: inline-block;
@@ -1643,6 +1854,49 @@ body.theme-midnight .gold-glitter-text {
   }
   .typo-curvy-beside-2 {
     font-size: 2.7rem;
+  }
+  .typo-tasnim-ocean {
+    font-size: 3.4rem;
+  }
+  .typo-ocean-infinity {
+    font-size: 1.95rem;
+  }
+  .typo-universe-possibilities {
+    font-size: 1.85rem;
+  }
+  .typo-lead-back {
+    font-size: 1.95rem;
+  }
+  .typo-tasnim-gold-glow {
+    font-size: 3.6rem;
+  }
+  .typo-thoha-universe {
+    font-size: 1.95rem;
+  }
+  .typo-every-ending {
+    font-size: 1.7rem;
+  }
+  .typo-choose-you-gold {
+    font-size: clamp(1.6rem, 5.8vw, 2.6rem);
+    letter-spacing: 0.08em;
+    text-indent: 0.08em;
+  }
+  .typo-my-love {
+    font-size: 3.2rem;
+  }
+  .typo-perpetuity {
+    font-size: 2.2rem;
+  }
+  .typo-in-infinity {
+    font-size: 2.1rem;
+    letter-spacing: 0.16em;
+    text-indent: 0.16em;
+  }
+  .typo-eternity-lead {
+    font-size: 2.2rem;
+  }
+  .typo-find-person {
+    font-size: 1.95rem;
   }
   .counter-box {
     width: 140px;
