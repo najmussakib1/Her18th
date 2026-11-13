@@ -14,8 +14,7 @@ class RomanticAudioManager {
     this.songPlayBtn = document.getElementById('songPlayBtn');
     this.soundToggleBtn = document.getElementById('soundToggleBtn');
     this.soundIcon = document.getElementById('soundIcon');
-    this.musicFileInput = document.getElementById('musicFileInput');
-    this.hasLocalAudioFile = false;
+    this.hasLocalAudioFile = true;
     this.hasUserInteracted = false;
   }
 
@@ -161,12 +160,11 @@ class RomanticAudioManager {
     }, 14500);
   }
 
-  // Start background track or graceful synthesized melody
+  // Start background track (Janam Janam Instrumental)
   startMusic() {
     this.initContext();
     this.startChirpingLoop();
 
-    // Check if music.mp3 is loaded and playable
     const playPromise = this.bgSong.play();
     if (playPromise !== undefined) {
       playPromise
@@ -174,37 +172,31 @@ class RomanticAudioManager {
           this.hasLocalAudioFile = true;
           this.isMelodyPlaying = false;
           this.musicDisc.classList.add('spinning');
-          this.songSourceStatus.textContent = 'Playing music.mp3 🎵';
+          this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
         })
         .catch(() => {
-          // If no local music.mp3 found or blocked, use procedural acoustic melody
-          this.hasLocalAudioFile = false;
-          this.isMelodyPlaying = true;
-          this.musicDisc.classList.add('spinning');
-          this.songSourceStatus.textContent = 'Acoustic Melody • Drop music.mp3';
-          this.playKiNaameDekeMelody();
+          // If autoplay policy requires a user tap
+          this.hasLocalAudioFile = true;
+          this.isMelodyPlaying = false;
+          this.musicDisc.classList.remove('spinning');
+          this.songSourceStatus.textContent = 'Tap anywhere to play 🎵';
         });
     }
   }
 
   toggleSong() {
     this.initContext();
-    if (this.hasLocalAudioFile) {
-      if (this.bgSong.paused) {
-        this.bgSong.play();
+    if (this.bgSong.paused) {
+      this.bgSong.play().then(() => {
         this.musicDisc.classList.add('spinning');
-      } else {
-        this.bgSong.pause();
-        this.musicDisc.classList.remove('spinning');
-      }
+        this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+      }).catch(err => {
+        console.log('Audio playback error:', err);
+      });
     } else {
-      this.isMelodyPlaying = !this.isMelodyPlaying;
-      if (this.isMelodyPlaying) {
-        this.musicDisc.classList.add('spinning');
-        this.playKiNaameDekeMelody();
-      } else {
-        this.musicDisc.classList.remove('spinning');
-      }
+      this.bgSong.pause();
+      this.musicDisc.classList.remove('spinning');
+      this.songSourceStatus.textContent = 'Paused ⏸️';
     }
   }
 
@@ -333,6 +325,79 @@ function createHeartBurst(centerX, centerY, count = 12) {
       createFloatingHeart(offsetX, offsetY);
     }, i * 35);
   }
+}
+
+// --- 4.1 Upward Floating Balloons (For Birthday Finale) ---
+const BALLOON_PALETTES = [
+  { light: '#ffc1e3', main: '#f48fb1', dark: '#c2185b', deep: '#880e4f' }, // Rose Pink
+  { light: '#fff9c4', main: '#ffd54f', dark: '#f57f17', deep: '#b78103' }, // Champagne Gold
+  { light: '#ffcdd2', main: '#e57373', dark: '#c62828', deep: '#80132b' }, // Ruby Maroon
+  { light: '#e1bee7', main: '#ba68c8', dark: '#7b1fa2', deep: '#4a148c' }, // Royal Lavender
+  { light: '#ffe0b2', main: '#ffb74d', dark: '#ef6c00', deep: '#b26a00' }, // Sunset Peach
+  { light: '#b2ebf2', main: '#4dd0e1', dark: '#00838f', deep: '#004d40' }, // Soft Aqua
+];
+
+function createFloatingBalloon() {
+  const container = document.getElementById('balloonsContainer');
+  if (!container) return;
+
+  // Keep balloon display calm, elegant, and uncrowded: max 5 active balloons
+  const activeBalloons = container.querySelectorAll('.floating-balloon');
+  if (activeBalloons.length >= 5) return;
+
+  const b = document.createElement('div');
+  b.className = 'floating-balloon';
+
+  const palette = BALLOON_PALETTES[Math.floor(Math.random() * BALLOON_PALETTES.length)];
+  const size = 56 + Math.random() * 26; // 56px to 82px
+  const x = 35 + Math.random() * (window.innerWidth - size - 70);
+  const duration = 9500 + Math.random() * 3500; // 9.5s to 13s for smooth graceful float
+  const sway = 14 + Math.random() * 16;
+  const rot = 3 + Math.random() * 4;
+  const swayTime = 3.2 + Math.random() * 1.6;
+  const id = 'bg_' + Math.random().toString(36).substring(2, 9);
+
+  b.style.left = `${x}px`;
+  b.style.setProperty('--size', `${size}px`);
+  b.style.setProperty('--duration', `${duration}ms`);
+
+  b.innerHTML = `
+    <div class="balloon-inner" style="--sway: ${sway}px; --rot: ${rot}deg; --sway-time: ${swayTime}s;">
+      <svg viewBox="0 0 60 95" width="100%" height="100%" style="overflow: visible;">
+        <defs>
+          <radialGradient id="${id}" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="${palette.light}" stop-opacity="0.85"/>
+            <stop offset="25%" stop-color="${palette.main}"/>
+            <stop offset="80%" stop-color="${palette.dark}"/>
+            <stop offset="100%" stop-color="${palette.deep}"/>
+          </radialGradient>
+        </defs>
+        <path d="M30,3 C16,3 6,15 6,32 C6,48 18,63 28,66 L27,69 L33,69 L32,66 C42,63 54,48 54,32 C54,15 44,3 30,3 Z" fill="url(#${id})" />
+        <ellipse cx="20" cy="18" rx="5" ry="9" transform="rotate(-28 20 18)" fill="#ffffff" opacity="0.45" />
+        <polygon points="26,69 34,69 31,73 29,73" fill="${palette.deep}" />
+        <path d="M30,73 Q24,80 33,86 T28,95" fill="none" stroke="rgba(255, 240, 245, 0.75)" stroke-width="1.3" />
+      </svg>
+    </div>
+  `;
+
+  container.appendChild(b);
+  setTimeout(() => {
+    b.remove();
+  }, duration + 300);
+}
+
+let balloonInterval = null;
+function startUpwardBalloons() {
+  if (balloonInterval) clearInterval(balloonInterval);
+  // Calm initial release of just 2-3 balloons with gentle spacing
+  createFloatingBalloon();
+  setTimeout(() => createFloatingBalloon(), 1200);
+  setTimeout(() => createFloatingBalloon(), 2400);
+
+  // Periodically release one new balloon at a calm, non-crowded pace
+  balloonInterval = setInterval(() => {
+    createFloatingBalloon();
+  }, 2200);
 }
 
 // --- 5. Typewriter & Erase Engine ---
@@ -1513,8 +1578,220 @@ async function runStorySequence() {
     }, (i + 1) * 750);
   }
 
-  // Final hold
-  await wait(16000);
+  // Hold Scene 38
+  await wait(3500);
+
+  // Fast Erase Scene 38
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 39: Bengali Evening Prayer (2 sec)
+  // "আমি চাই, আমার প্রত্যেক আগামীকালের"
+  // "প্রথম চিন্তা তুমি হও,"
+  // "প্রতিদিনের শেষ আশ্রয় তুমি হও"
+  // ==========================================
+  line1.className = 'story-line typo-bangla-prayer-1';
+  await typeText(line1, 'আমি চাই, আমার প্রত্যেক আগামীকালের', 55);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-bangla-prayer-2';
+  await typeText(line2, 'প্রথম চিন্তা তুমি হও,', 60);
+
+  await wait(650);
+
+  line3.className = 'story-line typo-bangla-prayer-3';
+  await typeText(line3, 'প্রতিদিনের শেষ আশ্রয় তুমি হও', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 39 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 39
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 40: Galaxies & Greatest Discovery (2 sec)
+  // "Among billions of galaxies, stars, countless possibilities "
+  // "My greatest discovery was YOU"
+  // ==========================================
+  line1.className = 'story-line typo-galaxies';
+  await typeText(line1, 'Among billions of galaxies, stars, countless possibilities ', 50);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-greatest-discovery';
+  await typeSegments(line2, [
+    { text: 'My greatest discovery was ' },
+    { text: 'YOU', className: 'gold-shimmer-radiant' }
+  ], 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 26);
+
+  // Hold Scene 40 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 40
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 41: Curvy and Golden Font (2 sec)
+  // "So this"
+  // "18th November"
+  // "My love was born"
+  // ==========================================
+  line1.className = 'story-line gold-curvy-text typo-born-1';
+  await typeText(line1, 'So this', 60);
+
+  await wait(600);
+
+  line2.className = 'story-line gold-curvy-text typo-born-2';
+  await typeText(line2, '18th November', 65);
+
+  await wait(600);
+
+  line3.className = 'story-line gold-curvy-text typo-born-3';
+  await typeText(line3, 'My love was born', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 30);
+
+  // Hold Scene 41 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 41
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 42: "Our very own week" -> "our very own November" (2 sec)
+  // ==========================================
+  line1.className = 'story-line typo-november-week-1';
+  await typeText(line1, 'Our very own week', 55);
+
+  await wait(700);
+
+  line2.className = 'story-line typo-november-week-2';
+  await typeText(line2, 'our very own November', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 24);
+
+  // Hold Scene 42 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 42
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 43: Blessing & Prayers (2 sec)
+  // "Your love celebrates this day"
+  // "as the blessing for him"
+  // "with countless prayers"
+  // ==========================================
+  line1.className = 'story-line typo-prayers-1';
+  await typeText(line1, 'Your love celebrates this day', 50);
+
+  await wait(650);
+
+  line2.className = 'story-line typo-prayers-2';
+  await typeText(line2, 'as the blessing for him', 55);
+
+  await wait(650);
+
+  line3.className = 'story-line typo-prayers-3';
+  await typeText(line3, 'with countless prayers', 55);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.55, 22);
+
+  // Hold Scene 43 for 2 seconds as requested
+  await wait(2000);
+
+  // Fast Erase Scene 43
+  await eraseText(line3, 14);
+  line3.className = 'story-line';
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(350);
+
+  // ==========================================
+  // SCENE 44: Golden Quotation & Bottom Right Author (4 sec)
+  // "“I love you, Tasnim”"
+  // "--Najmus Sakib Thoha"
+  // ==========================================
+  line1.className = 'story-line typo-quote-iloveyou gold-curvy-text';
+  await typeText(line1, '“I love you, Tasnim”', 60);
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.45, 24);
+
+  await wait(750);
+
+  line2.className = 'story-line typo-quote-author';
+  await typeText(line2, '—Najmus Sakib Thoha', 55);
+
+  // Hold Scene 44 for 4 seconds as requested
+  await wait(4000);
+
+  // Fast Erase Scene 44
+  await eraseText(line2, 14);
+  line2.className = 'story-line';
+  await eraseText(line1, 14);
+  line1.className = 'story-line';
+
+  await wait(400);
+
+  // ==========================================
+  // SCENE 45 (Grand Birthday Finale with Upward Balloons):
+  // "Happy birthday Tasnim" with balloons moving upward..
+  // ==========================================
+  line1.className = 'story-line typo-hbd-tasnim gold-curvy-text';
+  await typeText(line1, 'Happy Birthday Tasnim', 65);
+
+  // Launch continuous upward balloon flight
+  startUpwardBalloons();
+
+  // Grand celebration heart bursts
+  createHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.5, 45);
+
+  // Periodic celebratory sparkles and heart bursts
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth * (0.15 + Math.random() * 0.7),
+        window.innerHeight * (0.2 + Math.random() * 0.6),
+        18
+      );
+    }, (i + 1) * 900);
+  }
+
+  // Grand finale stays permanently active
+  await wait(30000);
 
   isStoryRunning = false;
 }
@@ -1531,6 +1808,9 @@ function startCountdown() {
   countdownOverlay.classList.remove('hidden');
   storyStage.classList.remove('active');
   clearAllLines();
+  if (balloonInterval) clearInterval(balloonInterval);
+  const bContainer = document.getElementById('balloonsContainer');
+  if (bContainer) bContainer.innerHTML = '';
   isStoryRunning = false;
 
   countdownDigit.className = 'counter-number pulse';
@@ -1608,14 +1888,6 @@ audioMgr.songPlayBtn.addEventListener('click', (e) => {
 audioMgr.soundToggleBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   audioMgr.toggleBirds();
-});
-
-// Custom local music file loader
-audioMgr.musicFileInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    audioMgr.loadCustomAudioFile(file);
-  }
 });
 
 // Replay button

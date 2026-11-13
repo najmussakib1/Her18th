@@ -24,30 +24,28 @@
   <!-- Floating Hearts on Click Container -->
   <div class="hearts-container" id="heartsContainer"></div>
 
+  <!-- Floating Balloons Container (For Birthday Finale) -->
+  <div class="balloons-container" id="balloonsContainer"></div>
+
   <!-- Top Floating Music & Sound Control Bar -->
   <header class="music-header">
     <div class="music-pill">
       <button id="songPlayBtn" class="pill-btn" title="Play / Pause Song">
         <span id="musicDisc" class="disc-icon spinning">🎵</span>
         <span class="song-info">
-          <span class="song-title">Ki Naame Deke Bolbo Tomake</span>
-          <span class="song-sub" id="songSourceStatus">Shyamal Mitra • Romantic Melody</span>
+          <span class="song-title">Janam Janam</span>
+          <span class="song-sub" id="songSourceStatus">Instrumental • Dilwale</span>
         </span>
       </button>
 
       <button id="soundToggleBtn" class="pill-btn mini-btn" title="Toggle Chirping Birds">
         <span id="soundIcon">🕊️</span>
       </button>
-
-      <label for="musicFileInput" class="pill-btn mini-btn" title="Load your local music file (music.mp3)">
-        📁
-      </label>
-      <input type="file" id="musicFileInput" accept="audio/*" style="display: none;">
     </div>
   </header>
 
-  <!-- Background Music Audio Element (Looks for music.mp3 in the project folder) -->
-  <audio id="bgSong" src="music.mp3" preload="auto" loop></audio>
+  <!-- Background Music Audio Element -->
+  <audio id="bgSong" src="Janam%20Janam%20(Instrumental).mp3" preload="auto" loop></audio>
 
   <!-- Stage 1: Initial 5-Second Countdown Intro Screen -->
   <div class="countdown-overlay" id="countdownOverlay">
