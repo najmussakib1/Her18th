@@ -8,8 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Galada&family=Great+Vibes&family=Lora:ital,wght@0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="janam.mp3" as="audio" type="audio/mpeg">
+  <link rel="preload" href="Janam%20Janam%20(Instrumental).mp3" as="audio" type="audio/mpeg">
 </head>
 <body>
+  <!-- Background Music Audio Element -->
+  <audio id="bgSong" preload="auto" loop playsinline>
+    <source src="janam.mp3" type="audio/mpeg">
+    <source src="Janam%20Janam%20(Instrumental).mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
   <!-- Ambient Soft Light Glows & Sunbeam Highlights -->
   <div class="sky-background">
     <div class="soft-sun"></div>
@@ -44,11 +52,27 @@
     </div>
   </header>
 
-  <!-- Background Music Audio Element -->
-  <audio id="bgSong" src="Janam%20Janam%20(Instrumental).mp3" preload="auto" loop></audio>
+
+  <!-- Stage 0: Tap to Start Initial Screen -->
+  <div class="tap-start-overlay" id="tapStartOverlay">
+    <div class="tap-start-card">
+      <div class="tap-start-icon-wrap">
+        <span class="tap-start-sparkle">✨</span>
+        <span class="tap-start-heart">💖</span>
+        <span class="tap-start-sparkle">✨</span>
+      </div>
+      <h2 class="tap-start-subtitle">A special surprise for</h2>
+      <h1 class="tap-start-name">Ha-Mim Tasnim</h1>
+      <p class="tap-start-note">Turn on your sound & prepare your heart 🎵</p>
+      <div class="tap-start-prompt" id="tapStartBtn">
+        <span class="tap-hand-indicator">👆</span>
+        <span class="tap-prompt-text">Tap to Start</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Stage 1: Initial 5-Second Countdown Intro Screen -->
-  <div class="countdown-overlay" id="countdownOverlay">
+  <div class="countdown-overlay hidden" id="countdownOverlay">
     <div class="countdown-content">
       <div class="pre-title">A special surprise is taking flight...</div>
       
@@ -60,7 +84,7 @@
         <div class="progress-fill" id="progressFill"></div>
       </div>
 
-      <p class="tap-hint" id="tapHint">✨ Tap anywhere to start with music & chirping birds ✨</p>
+      <p class="tap-hint" id="tapHint" style="opacity: 0;">✨ Happy Birthday Ha-Mim Tasnim ✨</p>
     </div>
   </div>
 

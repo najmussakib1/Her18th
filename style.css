@@ -258,6 +258,164 @@ body {
   transform: scale(1.1);
 }
 
+/* Stage 0: Tap to Start Initial Screen */
+.tap-start-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: radial-gradient(circle at center, rgba(255, 245, 248, 0.88) 0%, rgba(253, 226, 236, 0.94) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+}
+
+.tap-start-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tap-start-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 25px 65px rgba(230, 140, 165, 0.35), 0 0 40px rgba(255, 255, 255, 0.9) inset;
+  border-radius: 36px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 90vw;
+  width: 440px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  animation: floatCard 4s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.tap-start-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tap-start-sparkle {
+  font-size: 1.4rem;
+  animation: sparkleTwinkle 2s ease-in-out infinite alternate;
+}
+
+.tap-start-heart {
+  font-size: 3.2rem;
+  display: inline-block;
+  animation: heartPulse 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(240, 98, 146, 0.5));
+}
+
+.tap-start-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--rose-gold);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.tap-start-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #c23e65;
+  text-shadow: 0 4px 18px rgba(233, 30, 99, 0.28);
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.tap-start-note {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  color: #7d4d5b;
+  opacity: 0.88;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.tap-start-prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 34px;
+  background: linear-gradient(135deg, #f06292 0%, #e91e63 100%);
+  color: #ffffff;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 28px rgba(233, 30, 99, 0.42);
+  animation: pulsePrompt 2s infinite;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tap-start-overlay:hover .tap-start-prompt {
+  transform: scale(1.05);
+  box-shadow: 0 14px 36px rgba(233, 30, 99, 0.55);
+}
+
+.tap-hand-indicator {
+  font-size: 1.35rem;
+  animation: tapBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.18); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.12); }
+  70% { transform: scale(1); }
+}
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.85) rotate(0deg); opacity: 0.6; }
+  100% { transform: scale(1.2) rotate(20deg); opacity: 1; }
+}
+
+@keyframes pulsePrompt {
+  0%, 100% {
+    box-shadow: 0 10px 28px rgba(233, 30, 99, 0.42);
+  }
+  50% {
+    box-shadow: 0 12px 36px rgba(233, 30, 99, 0.65), 0 0 22px rgba(240, 98, 146, 0.5);
+  }
+}
+
+@keyframes tapBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 600px) {
+  .tap-start-card {
+    padding: 38px 24px;
+    border-radius: 28px;
+  }
+  .tap-start-name {
+    font-size: 2.8rem;
+  }
+  .tap-start-prompt {
+    font-size: 1rem;
+    padding: 13px 26px;
+  }
+}
+
 /* Stage 1: 5-Second Countdown Screen */
 .countdown-overlay {
   position: fixed;

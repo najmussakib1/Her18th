@@ -16,6 +16,30 @@ class RomanticAudioManager {
     this.soundIcon = document.getElementById('soundIcon');
     this.hasLocalAudioFile = true;
     this.hasUserInteracted = false;
+
+    // Ensure infinite looping and event synchronization on track
+    if (this.bgSong) {
+      this.bgSong.loop = true;
+      this.bgSong.addEventListener('play', () => {
+        if (this.musicDisc) this.musicDisc.classList.add('spinning');
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+        const hint = document.getElementById('tapHint');
+        if (hint) hint.style.opacity = '0';
+      });
+      this.bgSong.addEventListener('pause', () => {
+        if (this.musicDisc) this.musicDisc.classList.remove('spinning');
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Paused ⏸️';
+      });
+      this.bgSong.addEventListener('ended', () => {
+        this.bgSong.currentTime = 0;
+        this.bgSong.play().catch(e => console.log('Loop play error:', e));
+      });
+      // Synchronize initial UI if already playing from early script
+      if (!this.bgSong.paused) {
+        if (this.musicDisc) this.musicDisc.classList.add('spinning');
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+      }
+    }
   }
 
   initContext() {
@@ -165,21 +189,35 @@ class RomanticAudioManager {
     this.initContext();
     this.startChirpingLoop();
 
+    if (!this.bgSong) return;
+    this.bgSong.loop = true;
+
+    // If already playing from page load script, don't restart or stutter
+    if (!this.bgSong.paused) {
+      if (this.musicDisc) this.musicDisc.classList.add('spinning');
+      if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+      const hint = document.getElementById('tapHint');
+      if (hint) hint.style.opacity = '0';
+      return;
+    }
+
     const playPromise = this.bgSong.play();
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
           this.hasLocalAudioFile = true;
           this.isMelodyPlaying = false;
-          this.musicDisc.classList.add('spinning');
-          this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+          if (this.musicDisc) this.musicDisc.classList.add('spinning');
+          if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+          const tapHint = document.getElementById('tapHint');
+          if (tapHint) tapHint.style.opacity = '0';
         })
-        .catch(() => {
-          // If autoplay policy requires a user tap
+        .catch((err) => {
+          // If browser policy holds until any micro-gesture, stay ready
           this.hasLocalAudioFile = true;
           this.isMelodyPlaying = false;
-          this.musicDisc.classList.remove('spinning');
-          this.songSourceStatus.textContent = 'Tap anywhere to play 🎵';
+          if (this.musicDisc) this.musicDisc.classList.add('spinning');
+          if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
         });
     }
   }
@@ -494,6 +532,8 @@ function wait(ms) {
 // --- 6. Story Progression Controller (Pure Floating Text, No Box) ---
 const audioMgr = new RomanticAudioManager();
 
+const tapStartOverlay = document.getElementById('tapStartOverlay');
+const tapStartBtn = document.getElementById('tapStartBtn');
 const countdownOverlay = document.getElementById('countdownOverlay');
 const countdownDigit = document.getElementById('countdownDigit');
 const progressFill = document.getElementById('progressFill');
@@ -1813,6 +1853,9 @@ function startCountdown() {
   if (bContainer) bContainer.innerHTML = '';
   isStoryRunning = false;
 
+  // Immediately play Janam Janam on start
+  audioMgr.startMusic();
+
   countdownDigit.className = 'counter-number pulse';
   countdownDigit.textContent = '3';
   progressFill.style.width = '0%';
@@ -1866,17 +1909,33 @@ function startCountdown() {
 }
 
 // --- 8. User Interaction & Handlers ---
-function handleFirstInteraction() {
-  audioMgr.startMusic();
-  if (tapHint) {
-    tapHint.style.opacity = '0';
+// Tap to Start at the very beginning
+let hasStarted = false;
+
+function handleTapToStart(e) {
+  if (hasStarted) return;
+  hasStarted = true;
+
+  if (tapStartOverlay) {
+    tapStartOverlay.classList.add('hidden');
   }
-  window.removeEventListener('click', handleFirstInteraction);
-  window.removeEventListener('touchstart', handleFirstInteraction);
+
+  // Create blossom of floating hearts where tapped
+  const x = (e && e.clientX) ? e.clientX : (e && e.touches && e.touches[0] ? e.touches[0].clientX : window.innerWidth / 2);
+  const y = (e && e.clientY) ? e.clientY : (e && e.touches && e.touches[0] ? e.touches[0].clientY : window.innerHeight / 2);
+  createHeartBurst(x, y, 16);
+
+  // Start music (Janam Janam) & chirping loop
+  audioMgr.startMusic();
+
+  // Launch the 5-second countdown & full story sequence
+  startCountdown();
 }
 
-window.addEventListener('click', handleFirstInteraction, { once: true });
-window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+if (tapStartOverlay) {
+  tapStartOverlay.addEventListener('click', handleTapToStart);
+  tapStartOverlay.addEventListener('touchstart', handleTapToStart, { passive: true });
+}
 
 // Song Play/Pause button
 audioMgr.songPlayBtn.addEventListener('click', (e) => {
@@ -1904,20 +1963,15 @@ confettiBtn.addEventListener('click', (e) => {
   audioMgr.playSingleChirp(1.25);
 });
 
-// Click anywhere on sky for floating hearts
+// Click anywhere on sky for floating hearts (after story has started)
 window.addEventListener('click', (e) => {
-  if (e.target.closest('button') || e.target.closest('label')) return;
+  if (!hasStarted) return;
+  if (e.target.closest('button') || e.target.closest('label') || e.target.closest('.tap-start-card')) return;
   createFloatingHeart(e.clientX, e.clientY);
 });
 
-// Initialize on DOM load
+// Initialize ambient sky on DOM load (waits for user tap to begin music & story)
 document.addEventListener('DOMContentLoaded', () => {
   initBirdsSky();
   initBokeh();
-  startCountdown();
-
-  // Try auto-starting sound if browser permits
-  setTimeout(() => {
-    audioMgr.startMusic();
-  }, 300);
 });
