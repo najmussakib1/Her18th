@@ -22,13 +22,13 @@ class RomanticAudioManager {
       this.bgSong.loop = true;
       this.bgSong.addEventListener('play', () => {
         if (this.musicDisc) this.musicDisc.classList.add('spinning');
-        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha';
         const hint = document.getElementById('tapHint');
         if (hint) hint.style.opacity = '0';
       });
       this.bgSong.addEventListener('pause', () => {
         if (this.musicDisc) this.musicDisc.classList.remove('spinning');
-        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Paused ⏸️';
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha • Paused ⏸️';
       });
       this.bgSong.addEventListener('ended', () => {
         this.bgSong.currentTime = 0;
@@ -37,7 +37,7 @@ class RomanticAudioManager {
       // Synchronize initial UI if already playing from early script
       if (!this.bgSong.paused) {
         if (this.musicDisc) this.musicDisc.classList.add('spinning');
-        if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+        if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha';
       }
     }
   }
@@ -195,7 +195,7 @@ class RomanticAudioManager {
     // If already playing from page load script, don't restart or stutter
     if (!this.bgSong.paused) {
       if (this.musicDisc) this.musicDisc.classList.add('spinning');
-      if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+      if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha';
       const hint = document.getElementById('tapHint');
       if (hint) hint.style.opacity = '0';
       return;
@@ -208,7 +208,7 @@ class RomanticAudioManager {
           this.hasLocalAudioFile = true;
           this.isMelodyPlaying = false;
           if (this.musicDisc) this.musicDisc.classList.add('spinning');
-          if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+          if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha';
           const tapHint = document.getElementById('tapHint');
           if (tapHint) tapHint.style.opacity = '0';
         })
@@ -217,7 +217,7 @@ class RomanticAudioManager {
           this.hasLocalAudioFile = true;
           this.isMelodyPlaying = false;
           if (this.musicDisc) this.musicDisc.classList.add('spinning');
-          if (this.songSourceStatus) this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+          if (this.songSourceStatus) this.songSourceStatus.textContent = 'by Thoha';
         });
     }
   }
@@ -227,14 +227,14 @@ class RomanticAudioManager {
     if (this.bgSong.paused) {
       this.bgSong.play().then(() => {
         this.musicDisc.classList.add('spinning');
-        this.songSourceStatus.textContent = 'Janam Janam • Dilwale';
+        this.songSourceStatus.textContent = 'by Thoha';
       }).catch(err => {
         console.log('Audio playback error:', err);
       });
     } else {
       this.bgSong.pause();
       this.musicDisc.classList.remove('spinning');
-      this.songSourceStatus.textContent = 'Paused ⏸️';
+      this.songSourceStatus.textContent = 'by Thoha • Paused ⏸️';
     }
   }
 
